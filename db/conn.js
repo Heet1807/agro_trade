@@ -11,3 +11,4 @@ mongoose.connect("mongodb://localhost:27017/trade-api",{
 }).catch((e) => {
     console.log("No Connection");
 });
+// id & passwrod che ke new create kari dav....new kari de OKa
