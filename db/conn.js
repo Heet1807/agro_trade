@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 
-mongoose.connect("mongodb://localhost:27017/trade-api",{
+mongoose.connect("mongodb+srv://heet:heet@123@node.e1eoz.mongodb.net/trade-api",{
     useCreateIndex:true,
     useNewUrlParser:true,
     useUnifiedTopology:true,
