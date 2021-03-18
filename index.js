@@ -12,7 +12,6 @@ if(!config.get('jwtPrivateKey')) {
     console.error('Something went wrong...........');
     process.exit(1);
 }
-
 console.log(config.get('jwtPrivateKey'));
 
 app.use(express.json());
