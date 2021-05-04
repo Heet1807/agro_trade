@@ -10,7 +10,7 @@ const router = express.Router();
 
 router.get('/getusers',async (req,res)=>{
     try {
-        let result = await User.find();
+        let result = await User.findOne({phone : 7016557804});
         console.log(result);
         res.send(result); 
         
@@ -22,9 +22,9 @@ router.get('/getusers',async (req,res)=>{
 // router.get('/getuser/:phone',async (req,res)=>{
 //     try {
 //         const _phone = req.params.phone;
-//         const userData = await User.findOne(_phone); 
-//         console.log(userData);
-//         res.send(userData); 
+//         const result = await User.findOne(_phone); 
+//         console.log(result);
+//         res.send(result); 
 //     }catch(e){
 //         res.status(400).send(e);
 //     }    
@@ -58,6 +58,20 @@ router.post('/adduser',async (req,res)=>{
     // }
 });
 
+
+router.post('/getUserByPhone',async (req,res)=>{
+    // const { error } = validate(req.body);
+    // if(error) return res.status(400).send(error.details[0].message);
+
+    let result = await User.findOne({phone : req.body.phone});
+    console.log(result);
+    res.send(_.pick(result,['_id', 'name', 'email','username']));
+    ///  = jwt.sign({ _id : user._id} , config.get('jwtPrivateKey'));
+    // res.header('x-auth-token', token).send(_.pick(user,['_id', 'name', 'email']));
+    // }catch (err) {
+    //     res.status(400).send(err.message);
+    // }
+});
 // //update the user by id
 // router.patch("/users/:id",async(req,res) => {
 //     try{

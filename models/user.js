@@ -33,6 +33,9 @@ const userSchema = new mongoose.Schema({
         minLenght : 6,
         maxLenght : 8
     },
+    image: {
+        type: String
+    },
     isAdmin : Boolean
 });
 
@@ -46,18 +49,18 @@ userSchema.methods.generateAuthToken = function() {
     }
     
 }
-const User = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema);
 
-function validateUser(user) {
-    var schema = Joi.object({
-        name : Joi.string().required(),
-        username : Joi.string().required(),
-        email : Joi.string().required().email(),
-        phone : Joi.number().required(),
-        password : Joi.string().min(6).max(14).required()
-    });
-    return schema.validate(user);
-}
+// function validateUser(user) {
+//     var schema = Joi.object({
+//         name : Joi.string().required(),
+//         username : Joi.string().required(),
+//         email : Joi.string().required().email(),
+//         phone : Joi.number().required(),
+//         password : Joi.string().min(6).max(14).required()
+//     });
+//     return schema.validate(user);
+// }
 
-exports.User = User;
-exports.validate = validateUser;
+// exports.User = User;
+// exports.validate = validateUser;
